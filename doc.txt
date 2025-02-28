@@ -1,0 +1,38 @@
+```
+
+To run the application:
+1. Create a MySQL database named `demo`
+2. Update database credentials in `application.properties`
+3. Run the application using:
+```sh
+mvn spring-boot:run
+```
+
+Access the application at `http://localhost:8080`
+
+This creates a simple Spring Boot application with:
+- MySQL database connection
+- JPA for data persistence
+- Thymeleaf for frontend templating
+- Basic CRUD operations for User entity
+- Simple frontend with a form to add users and display existing users
+
+
+FILE STRUCTURE:
+src/
+├── main/
+    ├── java/
+    │   └── com/
+    │       └── example/
+    │           └── demo/
+    │               ├── DemoApplication.java
+    │               ├── controller/
+    │               │   └── UserController.java
+    │               ├── model/
+    │               │   └── User.java
+    │               └── repository/
+    │                   └── UserRepository.java
+    └── resources/
+        ├── application.properties
+        └── templates/
+            └── index.html
