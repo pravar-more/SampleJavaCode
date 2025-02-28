@@ -18,7 +18,7 @@ This creates a simple Spring Boot application with:
 - Simple frontend with a form to add users and display existing users
 
 
-FILE STRUCTURE:
+FILE STRUCTURE:::
 src/
 ├── main/
     ├── java/
