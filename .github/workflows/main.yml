@@ -38,4 +38,4 @@ jobs:
 
     - name: Run Python script
       run: |
-        python .\input-repo\main.py input-repo
+        python .\input-repo\main.py secrets.INPUT_REPO_URL
