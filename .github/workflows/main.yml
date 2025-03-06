@@ -33,9 +33,9 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r input-repo/requirements.txt
 
 
     - name: Run Python script
       run: |
-        python .\main.py input-repo
+        python .\input-repo\main.py input-repo
