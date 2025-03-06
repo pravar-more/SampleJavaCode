@@ -34,7 +34,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r input-repo/requirements.txt
-        echo "installation done --------------"
+        echo "installation done ---------------"
 
 
     - name: Run Python script
