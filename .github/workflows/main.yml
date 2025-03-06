@@ -8,79 +8,76 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-        
-    - name: Clone input repository
-      run: |
-        git clone ${{ secrets.INPUT_REPO_URL }} input-repo
-      env:
-        INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r input-repo/requirements.txt
-        echo "installation done --------------------"
-
-    - name: Run Python script
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
-      run: |
-        python input-repo/main.py
-
-    - name: Remote Change
-      run: |
-        git remote -v
-      env:
-        REPO_URL: ${{ github.repository_url }}
-    
-    - name: Check CodeAnalysis and Recommendation pdf to repo
-      env:
-        INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
-        REPO_URL: ${{ github.repository_url }}
-      run: |
-        echo "hello"
-        echo "-----"
-        ls 
-        echo "-----"
-        ls input-repo
-        echo "-----"
-        ls analysis_reports
-        echo "-----"
-        ls recommendation_reports
-    - name: Add CodeAnalysis and Recommendation pdf to repo
-      env:
-        INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
-        REPO_URL: ${{ github.repository_url }}
-      run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
-        echo "-----"
-        cd analysis_reports
-        git add .
-        git commit -m "analysis_reportPDF_added"
-        git push
-        cd ..
-        echo "-----"
-        cd recommendation_reports
-        git add .
-        git commit -m "recommendation_reportPDF_added"
-        git push
-        echo "PUSHED"
+      - name: Checkout repository
+        uses: actions/checkout@v2
       
-
-
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          
+      - name: Clone input repository
+        run: |
+          git clone ${{ secrets.INPUT_REPO_URL }} input-repo
+        env:
+          INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r input-repo/requirements.txt
+          echo "installation done --------------------"
+      
+      - name: Run Python script
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        run: |
+          python input-repo/main.py
+      
+      - name: Remote Change
+        run: |
+          git remote -v
+        env:
+          REPO_URL: ${{ github.repository_url }}
+      
+      - name: Check CodeAnalysis and Recommendation pdf to repo
+        env:
+          INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
+          REPO_URL: ${{ github.repository_url }}
+        run: |
+          echo "hello"
+          echo "-----"
+          ls 
+          echo "-----"
+          ls input-repo
+          echo "-----"
+          ls analysis_reports
+          echo "-----"
+          ls recommendation_reports
+      - name: Add CodeAnalysis and Recommendation pdf to repo
+        env:
+          INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
+          REPO_URL: ${{ github.repository_url }}
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          echo "-----"
+          cd analysis_reports
+          git add .
+          git commit -m "analysis_reportPDF_added"
+          git push
+          cd ..
+          echo "-----"
+          cd recommendation_reports
+          git add .
+          git commit -m "recommendation_reportPDF_added"
+          git push
+          echo "PUSHED"
+        
