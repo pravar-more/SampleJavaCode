@@ -58,6 +58,10 @@ jobs:
         ls 
         echo "-----"
         ls input-repo
+        echo "-----"
+        ls analysis_reports
+        echo "-----"
+        ls recommendation_reports
       
 
 
