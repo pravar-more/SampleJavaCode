@@ -52,7 +52,7 @@ jobs:
       env:
         INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
         REPO_URL: ${{ github.repository_url }}
-      run:
+      run: |
         echo "hello"
         ls 
         ls input-repo
