@@ -54,7 +54,9 @@ jobs:
         REPO_URL: ${{ github.repository_url }}
       run: |
         echo "hello"
+        echo "-----"
         ls 
+        echo "-----"
         ls input-repo
       
 
