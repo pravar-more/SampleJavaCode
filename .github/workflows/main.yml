@@ -61,23 +61,20 @@ jobs:
           ls analysis_reports
           echo "-----"
           ls recommendation_reports
-      - name: Add CodeAnalysis and Recommendation pdf to repo
-        env:
-          INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
-          REPO_URL: ${{ github.repository_url }}
+      - name: Configure Git
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          echo "-----"
-          cd analysis_reports
-          git add .
-          git commit -m "analysis_reportPDF_added"
-          git push
-          cd ..
-          echo "-----"
-          cd recommendation_reports
-          git add .
-          git commit -m "recommendation_reportPDF_added"
-          git push
-          echo "PUSHED"
-        
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+  
+      - name: Add and commit changes
+        run: |
+          git add analysis_reports/* recommendation_reports/* || true
+          git commit -m "Add analysis and recommendation reports [skip ci]" || true
+  
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+            echo "PUSHED"
+          
