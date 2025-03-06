@@ -48,7 +48,7 @@ jobs:
       env:
         REPO_URL: ${{ github.repository_url }}
     
-    - name: add CodeAnalysis and Recommendation pdf to repo
+    - name: Check CodeAnalysis and Recommendation pdf to repo
       env:
         INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
         REPO_URL: ${{ github.repository_url }}
@@ -62,6 +62,23 @@ jobs:
         ls analysis_reports
         echo "-----"
         ls recommendation_reports
+    - name: Add CodeAnalysis and Recommendation pdf to repo
+      env:
+        INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
+        REPO_URL: ${{ github.repository_url }}
+      run: |
+        echo "-----"
+        cd analysis_reports
+        git add .
+        git commit -m "analysis_reportPDF_added"
+        git push
+        cd ..
+        echo "-----"
+        cd recommendation_reports
+        git add .
+        git commit -m "recommendation_reportPDF_added"
+        git push
+        echo "PUSHED"
       
 
 
