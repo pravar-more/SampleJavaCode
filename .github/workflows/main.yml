@@ -36,9 +36,28 @@ jobs:
         pip install -r input-repo/requirements.txt
         echo "installation done --------------------"
 
-
     - name: Run Python script
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
       run: |
         python input-repo/main.py
+
+    - name: Remote Change
+      run: |
+        git remote -v
+        git remote remove origin
+        git remote add origin ${{ github.repository_url }}
+      env:
+        REPO_URL: ${{ github.repository_url }}
+    
+    - name: add CodeAnalysis and Recommendation pdf to repo
+      env:
+        INPUT_REPO_URL: ${{ github.event.inputs.repo_url }}
+        REPO_URL: ${{ github.repository_url }}
+      run:
+        echo "hello"
+        ls 
+        ls input-repo
+      
+
+
