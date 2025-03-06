@@ -18,10 +18,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '11'
-
-    - name: Build with Gradle
-      run: ./gradlew build
-
+        
     - name: Clone input repository
       run: |
         git clone ${{ secrets.INPUT_REPO_URL }} input-repo
