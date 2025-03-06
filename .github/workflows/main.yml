@@ -38,5 +38,7 @@ jobs:
 
 
     - name: Run Python script
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
       run: |
-        python input-repo/main.py 
+        python input-repo/main.py
