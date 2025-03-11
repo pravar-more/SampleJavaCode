@@ -1,0 +1,28 @@
+name: Deploy to Azure App Service
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+    
+    - name: Call Azure App Service
+      env:
+        SERVICE_URL: ${{ secrets.AZURE_SERVICE_URL }}  # The URL of your Azure App Service
+        INPUT_VARIABLE: ${{ github.repository_url }}
+      run: |
+        echo "To be called"
+        curl -X GET "$SERVICE_URL" -d "input=$INPUT_VARIABLE"
+        echo "called"
