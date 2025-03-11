@@ -25,5 +25,7 @@ jobs:
       run: |
         echo "To be called"
         # curl -X GET "$SERVICE_URL" -d "input=$INPUT_VARIABLE"
-        curl "$SERVICE_URL?input=$INPUT_VARIABLE"
+        url = $SERVICE_URL?input=$INPUT_VARIABLE
+        echo url
+        curl url
         echo "called"
