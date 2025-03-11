@@ -21,7 +21,7 @@ jobs:
     - name: Call Azure App Service
       env:
         SERVICE_URL: ${{ secrets.AZURE_SERVICE_URL }}  
-        INPUT_VARIABLE: ${{ github.repository_url }}
+        INPUT_VARIABLE: ${{ github.repository }}
       run: |
         echo "To be called"
         echo $INPUT_VARIABLE
