@@ -26,5 +26,6 @@ jobs:
         echo "To be called"
         echo $INPUT_VARIABLE
         echo $SERVICE_URL?input=$INPUT_VARIABLE
-        curl "$SERVICE_URL?input=$INPUT_VARIABLE"
+        curl -X GET "$SERVICE_URL?input=$INPUT_VARIABLE"
+        wget -qO- "$SERVICE_URL?input=$INPUT_VARIABLE"
         echo "called"
