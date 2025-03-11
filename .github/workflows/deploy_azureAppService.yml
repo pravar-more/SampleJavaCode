@@ -20,12 +20,12 @@ jobs:
     
     - name: Call Azure App Service
       env:
-        SERVICE_URL: tsg-githubaction-hac2azgjcefjctg4.centralindia-01.azurewebsites.net/run
+        SERVICE_URL: ${{ secrets.AZURE_SERVICE_URL }}
         INPUT_VARIABLE: https://github.com/${{ github.repository }}.git
       run: |
         echo "To be called"
         echo $INPUT_VARIABLE
         echo $SERVICE_URL?input=$INPUT_VARIABLE
-        curl -X GET "$SERVICE_URL?input=$INPUT_VARIABLE"
+        # curl -X GET "$SERVICE_URL?input=$INPUT_VARIABLE"
         wget -qO- "$SERVICE_URL?input=$INPUT_VARIABLE"
         echo "called"
