@@ -22,10 +22,11 @@ jobs:
       env:
         SERVICE_URL: ${{ secrets.AZURE_SERVICE_URL }}
         INPUT_VARIABLE: https://github.com/${{ github.repository }}.git
+        # INPUT_VARIABLE: https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git
       run: |
-        echo "To be called"
+        echo "Running Tech Stack Governance Workflow"
         echo $INPUT_VARIABLE
         echo $SERVICE_URL?input=$INPUT_VARIABLE
         # curl -X GET "$SERVICE_URL?input=$INPUT_VARIABLE"
         wget -qO- "$SERVICE_URL?input=$INPUT_VARIABLE"
-        echo "called"
+        echo "Generated Response CHeck the Azure Blob Container."
