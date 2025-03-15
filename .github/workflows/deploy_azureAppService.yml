@@ -2,7 +2,7 @@ name: Deploy to Azure App Service
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened,closed]
     branches:
       - main
       
