@@ -1,11 +1,13 @@
 name: Deploy to Azure App Service
 
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened, closed]
+#     branches:
+#       - main
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
-      
+  issues:
+    types: [opened,deleted,closed]      
 jobs:
   build:
     runs-on: ubuntu-latest
