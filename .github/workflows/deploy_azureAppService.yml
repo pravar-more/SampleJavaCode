@@ -1,4 +1,4 @@
-name:  Tech-Stack Compliance Agent 
+name:  Tech-Stack Compliance 
 
 on:
   issues:    
@@ -17,7 +17,7 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
     
-    - name: Call Azure App Service
+    - name: Tech-Stack Compliance Agent 
       env:
         SERVICE_URL: ${{ secrets.AZURE_SERVICE_URL }}
         INPUT_VARIABLE: https://github.com/${{ github.repository }}.git
