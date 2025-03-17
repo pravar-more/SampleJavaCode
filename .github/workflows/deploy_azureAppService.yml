@@ -1,4 +1,4 @@
-name: Deploy to Azure App Service
+name:  Tech-Stack Compliance Agent 
 
 # on:
 #   pull_request:
@@ -6,8 +6,8 @@ name: Deploy to Azure App Service
 #     branches:
 #       - main
 on:
-  issues:
-    types: [opened,deleted,closed]      
+  issues:    
+    types: [deleted,closed]      
 jobs:
   build:
     runs-on: ubuntu-latest
