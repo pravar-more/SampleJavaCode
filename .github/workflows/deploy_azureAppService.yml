@@ -1,10 +1,5 @@
 name:  Tech-Stack Compliance Agent 
 
-# on:
-#   pull_request:
-#     types: [opened, synchronize, reopened, closed]
-#     branches:
-#       - main
 on:
   issues:    
     types: [deleted,closed]      
