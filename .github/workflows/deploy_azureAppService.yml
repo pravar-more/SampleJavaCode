@@ -1,13 +1,8 @@
 name:  Tech-Stack Compliance Agent 
 
-# on:
-#   pull_request:
-#     types: [opened, synchronize, reopened, closed]
-#     branches:
-#       - main
 on:
   issues:
-    types: [opened,deleted,closed]      
+    types: [deleted,closed]      
 jobs:
   build:
     runs-on: ubuntu-latest
